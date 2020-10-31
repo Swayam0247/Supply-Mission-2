@@ -23,9 +23,9 @@ function setup() {
 	engine = Engine.create();
 	world= engine.world;
 	
-	redbox1=createSprite(400, 650, 100, 20, o_options);
-	redbox2=createSprite(350, 630, 20, 80, o_options);
-	redbox3=createSprite(450, 630, 20, 80, o_options);
+	redbox1=createSprite(400, 650, 200, 20, o_options);
+	redbox2=createSprite(300, 630, 20, 80, o_options);
+	redbox3=createSprite(500, 630, 20, 80, o_options);
 
 	redbox1.shapeColor = ("red");  
 	redbox2.shapeColor = ("red");  
