@@ -16,20 +16,14 @@ function setup() {
 	createCanvas(800, 700);
 	rectMode(CENTER);
 	
-	var o_options ={
-		isStatic : true
-	  }
+	//var o_options ={
+		//isStatic : true
+	 // }
  
 	engine = Engine.create();
 	world= engine.world;
 	
-	redbox1=createSprite(400, 650, 200, 20, o_options);
-	redbox2=createSprite(300, 630, 20, 80, o_options);
-	redbox3=createSprite(500, 630, 20, 80, o_options);
-
-	redbox1.shapeColor = ("red");  
-	redbox2.shapeColor = ("red");  
-	redbox3.shapeColor = ("red");  
+	redbox1=new Red_Box(400,630,100,100); 
 
 	packageSprite=createSprite(width/2, 80, 10,10,o_options);
 	packageSprite.addImage(packageIMG)
@@ -60,6 +54,7 @@ function draw() {
   packageSprite.x= packageBody.position.x 
   packageSprite.y= packageBody.position.y 
   keyPressed();
+  redbox1.display();
   drawSprites();
 }
 
