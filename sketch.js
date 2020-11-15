@@ -1,5 +1,5 @@
 var helicopterIMG, helicopterSprite, packageSprite,packageIMG;
-var packageBody,ground,redbox1,redbox2,redbox3;
+var packageBody,ground,redbox1body,redbox2body,redbox3body,redbox1sprite,redbox2sprite,redbox3sprite;
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
@@ -16,19 +16,26 @@ function setup() {
 	createCanvas(800, 700);
 	rectMode(CENTER);
 	
-	//var o_options ={
-		//isStatic : true
-	 // }
+	var o_options ={
+		isStatic : true
+	  }
  
 	engine = Engine.create();
 	world= engine.world;
-	
-	redbox1=new Red_Box(400,630,100,100); 
 
-	packageSprite=createSprite(width/2, 80, 10,10,o_options);
+	packageSprite=createSprite(width/2, 80, 40,40,o_options);
 	packageSprite.addImage(packageIMG)
 	packageSprite.scale=0.2
 	
+	redbox1sprite=createSprite(400, 650, 200,20,o_options);
+	redbox1sprite.shapeColor=color("red");
+
+	redbox2sprite=createSprite(300, 610, 20,100,o_options);
+	redbox2sprite.shapeColor=color("red");
+
+	redbox3sprite=createSprite(500, 610, 20,100,o_options);
+	redbox3sprite.shapeColor=color("red");
+
 	helicopterSprite=createSprite(width/2, 200, 10,10);
 	helicopterSprite.addImage(helicopterIMG)
 	helicopterSprite.scale=0.6
@@ -39,10 +46,19 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {isStatic:true});
+	packageBody = Bodies.rectangle(width/2 , 200 , 40 ,40, {isStatic:true});
 	World.add(world, packageBody);
+
+	redbox1body = Bodies.rectangle(400 , 650 , 200 ,20, {isStatic:true});
+	World.add(world, redbox1body);
+
+	redbox2body = Bodies.rectangle(300 , 610 , 20 ,100, {isStatic:true});
+	World.add(world, redbox2body);
+
+	redbox3body = Bodies.rectangle(500 , 610 , 20 ,100, {isStatic:true});
+	World.add(world, redbox3body);
 	
-	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
+	ground = Bodies.rectangle(width/2, height-35, width, 10 , {isStatic:true} );
  	World.add(world, ground);
 
 	Engine.run(engine);
@@ -54,7 +70,6 @@ function draw() {
   packageSprite.x= packageBody.position.x 
   packageSprite.y= packageBody.position.y 
   keyPressed();
-  redbox1.display();
   drawSprites();
 }
 

@@ -8,8 +8,7 @@ class Red_Box {
       this.body = Bodies.rectangle(x, y, width, height, options);
       this.width = 20;
       this.height = height;
-      Matter.Body.setAngle(this.body,angle);
-      
+    
       World.add(world, this.body);
     }
     display(){
